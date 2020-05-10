@@ -18,4 +18,11 @@ print('Login Successful!\n')
 
 
 print('1. Find password\n2. Store existing password\n3. Generate new secure password\n4. Change master password\n')
-option = int(input('Please select from an option above (1, 2, 3, 4):'))
+
+valid_option: bool = False
+while not valid_option:
+    try:
+        option = int(input('Please select from an option above (1, 2, 3, 4):'))
+        valid_option = True
+    except:
+        print('Invalid option. Please select a valid number corresponding to your choice')
