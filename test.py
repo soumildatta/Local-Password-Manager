@@ -1,6 +1,8 @@
 import sqlite3 
+import hashing
+import database
 
-conn = sqlite3.connect('testing.db')
+conn = sqlite3.connect('database.db')
 
 # create cursor object 
 c = conn.cursor()
@@ -9,16 +11,21 @@ c = conn.cursor()
 # c.execute(''' CREATE TABLE passwords (
 #         platform text, 
 #         username text, 
-#         hashed text, 
-#         salt text
+#         hashed_password text 
 #     )''')
 
-# c.execute("INSERT INTO passwords VALUES ('Chrome', 'hellothere', 'ahofiefiahe8f9oqi3#$1$ohfs0', 'f7*')")
+# password = hashing.hashPassword("hello")
+# print(hashing.verifyPassword(password, "hello"))
+
+
+# c.execute("INSERT INTO passwords VALUES ('none', 'master_pass', ?)", (password,))
 # conn.commit()
 
-for row in c.execute("SELECT * FROM passwords"):
-    rowed = row[2]
+# print(rowed)
+for row in c.execute('SELECT hashed_password FROM passwords WHERE username = "master_pass"'):
+    print(row[0])
 
-print(rowed)
+data = database.Database()
+print(data.checkMasterPass("hello"))
 
 conn.close()

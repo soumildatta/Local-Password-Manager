@@ -1,3 +1,5 @@
+import database
+
 # welcome 
 print("Welcome to your Local Password Manager")
 
@@ -6,6 +8,13 @@ print("Welcome to your Local Password Manager")
 
 # password to log into manager
 master_pass = input("Please enter your master password to continue: ")
+
+db = database.Database()
+
+if db.checkMasterPass(master_pass):
+    print("Logged in")
+else:
+    print("Wrong password")
 
 # divider 
 print('\n-------------------------------------------------------------------------\n')

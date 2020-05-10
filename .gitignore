@@ -1,1 +1,3 @@
 hashing.py
+__pycache__/
+database.db
