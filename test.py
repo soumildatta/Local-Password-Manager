@@ -14,6 +14,11 @@ c = conn.cursor()
 #     )''')
 
 # c.execute("INSERT INTO passwords VALUES ('Chrome', 'hellothere', 'ahofiefiahe8f9oqi3#$1$ohfs0', 'f7*')")
+# conn.commit()
 
-for row in c.execute("show tables"):
-    print(row)
+for row in c.execute("SELECT * FROM passwords"):
+    rowed = row[2]
+
+print(rowed)
+
+conn.close()
