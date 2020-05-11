@@ -46,3 +46,5 @@ class Database:
         except:
             print("\nNo platform with this name found\n")
             return False
+
+    # TODO update password

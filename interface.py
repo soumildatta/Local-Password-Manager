@@ -1,6 +1,8 @@
 import database
 # import only system from os 
 from os import system, name 
+import random
+import string
     
 # define our clear function 
 def clear(): 
@@ -11,6 +13,24 @@ def clear():
     else: 
         _ = system('clear') 
 
+
+def randomPassword():
+    password_items = []
+
+    letters = string.ascii_letters
+    numbers = [x for x in range(0, 10)]
+
+    counter = 0
+    while counter <= 8:
+        password_items.append(random.choice(letters))
+        password_items.append(str(random.choice(numbers)))
+        counter += 1
+
+    final = ""
+    for x in password_items:
+        final += x
+
+    return final    
 
 def quitApp() -> bool:
     print("\n\nWould you like to:\n1. Pick another option\n2. Quit Application")
@@ -63,7 +83,7 @@ if db.checkMasterPass(master_pass):
 
 
         #! OPTIONS
-        # Find a password
+        #* Find a password
         if option == 1:
             retrieve_platform: str = input('Enter the name of the platform that you wish to see your password of: ')
 
@@ -72,7 +92,7 @@ if db.checkMasterPass(master_pass):
             
             repeat = quitApp()
 
-        # Store an existing password
+        #* Store an existing password
         elif option == 2:
             # store existing password: make a class
             clear()
@@ -92,24 +112,34 @@ if db.checkMasterPass(master_pass):
         # Generate and store password
         elif option == 3:
             # Generate randomized password
-            print("TODO")
+            print("Generate a random password")
+
+            platform: str = input("Enter the name of the platform: ")
             
+            generated_password = randomPassword()
+            print("Generated password:  ")
+            print("\nStoring password in database")
+
+            db.storePassword(platform_name, username, generated_password)
+
             repeat = quitApp()
 
+        # change master password
         elif option == 4:
-            # changing master password 
             master = input('Enter your current master password: ')
+            master_authenticated = db.checkMasterPass(master)
 
-            valid_master = False
-            while not valid_master:
-                if master:
-                    new_master = input('Enter a new master password: ')
-                    valid_master = True
-                else:
-                    print('Master output incorrect')
+            if master_authenticated:
+                clear()
+                new_master = input('Enter a new master password: ')
+                
+                # db.updatePassword('none', 'master_pass', )
+            else:
+                print("Wrong password")
 
             repeat = quitApp()
-
+        
+        #* Exit
         elif option == 5:
             clear()
             print("\nGoodbye!")
