@@ -126,18 +126,18 @@ if db.checkMasterPass(master_pass):
 
             repeat = quitApp()
 
-        # Generate and store password
+        #* Generate and store password
         elif option == 3:
             # Generate randomized password
             print("Generate a random password")
 
             platform: str = input("Enter the name of the platform: ")
+            username: str = input("Enter your username for this platform: ")
             
             generated_password = randomPassword()
-            print("Generated password:  ")
-            print("\nStoring password in database")
+            print(f"\nGenerated password: {generated_password}")
 
-            db.storePassword(platform_name, username, generated_password)
+            db.storePassword(platform, username, generated_password)
 
             repeat = quitApp()
 

@@ -1,6 +1,7 @@
 import sqlite3
 import hashing
 from cryptography.fernet import Fernet
+import sys
 
 class Database:
     
@@ -29,13 +30,17 @@ class Database:
         print("\nSuperuser created")
 
     def checkMasterPass(self, master_password) -> bool:
-        for row in self.cursor.execute('SELECT password FROM passwords WHERE username = "master_pass"'):
-            password = row[0]
+        try:
+            for row in self.cursor.execute('SELECT password FROM passwords WHERE username = "master_pass"'):
+                password = row[0]
 
-        # entered_password = hashing.hashPassword(self.master_password)
-        check = hashing.verifyPassword(password, master_password)
-
-        return check
+            # entered_password = hashing.hashPassword(self.master_password)
+            check = hashing.verifyPassword(password, master_password)
+            return check
+        except:
+            print("Sign up first!")
+            sys.exit()
+            
 
     def storePassword(self, platform, username, password):
         try:
