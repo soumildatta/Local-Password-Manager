@@ -7,9 +7,29 @@ class Database:
     def __init__(self):
         self.conn = sqlite3.connect('database.db')
         self.cursor = self.conn.cursor()
+    
+    def createTable(self):
+        try:
+            self.cursor.execute('''CREATE TABLE passwords (
+                platform text, 
+                username text,
+                password text,
+                key text
+            )''')
+            self.conn.commit()
+
+            print('\nNew table created')
+        except:
+            print('\nTable already exists')
+    
+    def createMasterPass(self, password):
+        hashed_password = hashing.hashPassword(password)
+        self.cursor.execute('INSERT INTO passwords VALUES ("none", "master_pass", ?, "none")', (hashed_password,))
+        self.conn.commit() 
+        print("\nSuperuser created")
 
     def checkMasterPass(self, master_password) -> bool:
-        for row in self.cursor.execute('SELECT hashed_password FROM passwords WHERE username = "master_pass"'):
+        for row in self.cursor.execute('SELECT password FROM passwords WHERE username = "master_pass"'):
             password = row[0]
 
         # entered_password = hashing.hashPassword(self.master_password)
@@ -33,7 +53,7 @@ class Database:
 
     def retrievePassword(self, platform) -> bool:
         try:
-            for row in self.cursor.execute('SELECT hashed_password, key FROM passwords WHERE platform = ?', (platform.lower(),)):
+            for row in self.cursor.execute('SELECT password, key FROM passwords WHERE platform = ?', (platform.lower(),)):
                 row_items = row
 
             # print(row_items)

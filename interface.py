@@ -1,6 +1,7 @@
 import database
 # import only system from os 
-from os import system, name 
+from os import system, name
+import sys 
 import random
 import string
     
@@ -12,7 +13,6 @@ def clear():
     # for mac and linux
     else: 
         _ = system('clear') 
-
 
 def randomPassword():
     password_items = []
@@ -45,17 +45,34 @@ def quitApp() -> bool:
     return repeat
 
 
+db = database.Database()
+
+
 # welcome 
+clear()
 print("Welcome to your Local Password Manager")
 
 # TODO: login or create user 
-# TODO: set user as logged in
+login_option = int(input("\nWould you like to\n1. Login\n2. Sign up\n3. Quit\n: "))
 
-# password to log into manager
-master_pass: str = input("Please enter your master password to continue: ")
+master_pass = ""
+if login_option == 1:
+    # password to log into manager
+    master_pass: str = input("Please enter your master password to continue: ")
 
-db = database.Database()
+elif login_option == 2:
+    db.createTable()
+    password = input("Please enter a master password (you will use this every time to log into this application)\n: ")
+    db.createMasterPass(password)
+    master_pass = password
 
+elif login_option == 3:
+    sys.exit()
+    
+else:
+    print("\nInvalid choice")
+    sys.exit()
+    
 if db.checkMasterPass(master_pass):
     print('\n-------------------------------------------------------------------------\n')
 
