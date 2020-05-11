@@ -11,21 +11,25 @@ c = conn.cursor()
 # c.execute(''' CREATE TABLE passwords (
 #         platform text, 
 #         username text, 
-#         hashed_password text 
+#         hashed_password text, 
+#         key text
 #     )''')
 
-# password = hashing.hashPassword("hello")
+password = hashing.hashPassword("hello")
 # print(hashing.verifyPassword(password, "hello"))
 
-
-# c.execute("INSERT INTO passwords VALUES ('none', 'master_pass', ?)", (password,))
+#! master password
+# c.execute("INSERT INTO passwords VALUES ('none', 'master_pass', ?, '0000')", (password,))
 # conn.commit()
 
-# print(rowed)
-for row in c.execute('SELECT hashed_password FROM passwords WHERE username = "master_pass"'):
-    print(row[0])
+#! Store platform
+# data = database.Database()
+# data.storePassword("Mozilla", "someone", "testing")
 
-data = database.Database()
-print(data.checkMasterPass("hello"))
+#! Retrieve 
+# print(data.retrievePassword("jit"))
+
+# data = database.Database()
+# print(data.checkMasterPass("hello"))
 
 conn.close()
