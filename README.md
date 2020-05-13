@@ -1,5 +1,5 @@
 # Local-Password-Manager
-This is a simple command line interface password manager written in Python which stores all of your manually inputted passwords locally. All the passwords are encrypted before storing to keep them secure.
+This is a simple command line interface password manager written in Python which stores all of your manually inputted passwords locally. All the passwords are encrypted before storing to keep them secure. All of the passwords are stored in a .db file in the folder containing the this program's files. 
 
 ## Get started
 To get this running on your local machine, make sure you have Python 3.6 or higher installed. 
@@ -17,3 +17,8 @@ Go inside the cloned project directory. Run the **interface.py** file in your te
 ``` python
 python interface.py
 ```
+
+# Using the password manager
+**The choices in this program are based on numerical input. Type the number corresponding to your choice and hit enter to pick the choice.**
+When you start the program (interface.py), it will prompt you to log in or sign up. If this is your first time using this program, choose sign up (2) and choose a password. You will use this password everytime to log into the program. 
+If this is not your first time, then choosing login (1) will log you into the password manager. 
