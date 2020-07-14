@@ -58,14 +58,14 @@ class Database:
 
     def retrievePassword(self, platform) -> bool:
         try:
-            for row in self.cursor.execute('SELECT password, key FROM passwords WHERE platform = ?', (platform.lower(),)):
+            for row in self.cursor.execute('SELECT password, username, key FROM passwords WHERE platform = ?', (platform.lower(),)):
                 row_items = row
 
-            # print(row_items)
-            fnet = Fernet(row_items[1])
+            fnet = Fernet(row_items[2])
+            username = row_items[1]
             password = fnet.decrypt(row_items[0])
 
-            print(f"\nPlatform: {platform}\nPassword: {password.decode()}")
+            print(f"\nPlatform: {platform}\nUsername: {username}\nPassword: {password.decode()}")
 
             return True
         except:
