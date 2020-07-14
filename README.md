@@ -19,6 +19,10 @@ python interface.py
 ```
 
 # Using the password manager
-**The choices in this program are based on numerical input. Type the number corresponding to your choice and hit enter to pick the choice.**
-When you start the program (interface.py), it will prompt you to log in or sign up. If this is your first time using this program, choose sign up (2) and choose a password. You will use this password everytime to log into the program. 
-If this is not your first time, then choosing login (1) will log you into the password manager. 
+**The choices in this program are based on numerical input. Type the number corresponding to your choice and hit enter to pick the choice.**  
+When you start the program (interface.py), it will prompt you to log in or sign up. If this is your first time using this program, choose sign up (2) and enter a password that you will use to log into the program every time.  
+If this is not your first time, then choosing login (1) and entering your password will log you into the password manager.    
+From there, you find the basic password manager functions which are - **find a password (1)** and **store a password (2)**. You can also choose to **generate a random 18 character password (3)** consisting of numbers, and uppercase and lowercase letters. The program will then automatically store the generated random password for the platform that the user specifies.   
+### What to do if you forget the master-password
+We are only human. Sometimes our memory fails us, and in that case, it is easy to reset the password manager to make it functional again.
+Simply go to the directory that contains the **_database.py_** file of the program. In that directory, delete the file named **_database.db_** and it will reset the password manager database, allowing you to create a new superuser. 
