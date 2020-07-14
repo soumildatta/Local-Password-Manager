@@ -61,10 +61,14 @@ if login_option == 1:
     master_pass: str = input("Please enter your master password to continue: ")
 
 elif login_option == 2:
-    db.createTable()
-    password = input("Please enter a master password (you will use this every time to log into this application)\n: ")
-    db.createMasterPass(password)
-    master_pass = password
+    bool = db.createTable()
+    if bool:
+        password = input("Please enter a master password (you will use this every time to log into this application)\n: ")
+        db.createMasterPass(password)
+        master_pass = password
+    else: 
+        sys.exit()
+
 
 elif login_option == 3:
     sys.exit()

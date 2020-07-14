@@ -20,8 +20,10 @@ class Database:
             self.conn.commit()
 
             print('\nNew table created')
+            return True
         except:
-            print('\nTable already exists')
+            print('\nUser already exists')
+            return False
     
     def createMasterPass(self, password):
         hashed_password = hashing.hashPassword(password)
