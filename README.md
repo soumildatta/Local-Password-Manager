@@ -29,7 +29,10 @@ We are only human. Sometimes our memory fails us, and in that case, it is easy t
 Simply go to the directory that contains the **_database.py_** file of the program. In that directory, delete the file named **_database.db_** and it will reset the password manager database, allowing you to create a new superuser.   
     
 ## User interface screenshots
-![screenshot](screenshots/ss1.png) ![screenshot](screenshots/ss2.png) ![screenshot](screenshots/ss3.png)
-
+<p float="left">
+  <img src="screenshots/ss1.png" width="473" />
+  <img src="screenshots/ss2.png" width="473" /> 
+  <img src="screenshots/ss3.png" width="473" />
+</p>
 
 
