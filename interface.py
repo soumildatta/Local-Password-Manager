@@ -52,7 +52,6 @@ db = database.Database()
 clear()
 print("Welcome to your Local Password Manager")
 
-# TODO: login or create user 
 login_option = int(input("\nWould you like to\n1. Login\n2. Sign up\n3. Quit\n: "))
 
 master_pass = ""
@@ -125,7 +124,6 @@ if db.checkMasterPass(master_pass):
             username: str = input("Enter your username: ")
             password: str = input("Enter your password: ")
 
-            # TODO: implement storePassword Method here
             db.storePassword(platform_name, username, password)
 
             repeat = quitApp()
@@ -154,7 +152,7 @@ if db.checkMasterPass(master_pass):
                 clear()
                 new_master = input('Enter a new master password: ')
                 
-                # db.updatePassword('none', 'master_pass', )
+                db.updateMasterPass(new_master)
             else:
                 print("Wrong password")
 
@@ -171,4 +169,3 @@ if db.checkMasterPass(master_pass):
 
 else:
     print("\nWrong password!")
-

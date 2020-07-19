@@ -36,11 +36,20 @@ class Database:
             for row in self.cursor.execute('SELECT password FROM passwords WHERE username = "master_pass"'):
                 password = row[0]
 
-            # entered_password = hashing.hashPassword(self.master_password)
             check = hashing.verifyPassword(password, master_password)
             return check
         except:
             print("Sign up first!")
+            sys.exit()
+
+    def updateMasterPass(self, new_password) -> bool:
+        try:
+            hashed_password = hashing.hashPassword(new_password)
+            self.cursor.execute('UPDATE passwords set password = ? WHERE username = "master_pass"', (hashed_password,))
+            self.conn.commit()
+            print("\nMaster password changed")
+        except:
+            print("An error occured. Run the program again")
             sys.exit()
             
 
