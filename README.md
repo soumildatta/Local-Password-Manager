@@ -30,9 +30,9 @@ Simply go to the directory that contains the **_database.py_** file of the progr
     
 ## User interface screenshots
 <p float="left">
-  <img src="screenshots/ss1.png" width="473" />
-  <img src="screenshots/ss2.png" width="473" /> 
-  <img src="screenshots/ss3.png" width="473" />
+  <img src="screenshots/ss1.png" width="470" />
+  <img src="screenshots/ss2.png" width="470" /> 
+  <img src="screenshots/ss3.png" width="470" />
 </p>
 
 
